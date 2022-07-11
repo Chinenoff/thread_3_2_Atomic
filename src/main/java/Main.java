@@ -3,7 +3,7 @@ import java.util.concurrent.atomic.LongAdder;
 public class Main {
 
     private static final int MAXNUMBERSHOP = 3;
-    private static final SumShopThread[] allThread = new SumShopThread[MAXNUMBERSHOP];
+    private static final SumShopThread[] ALL_THREAD = new SumShopThread[MAXNUMBERSHOP];
     private static LongAdder counter;
 
     public static void main(String[] args) {
@@ -26,7 +26,7 @@ public class Main {
         //ожидание завершения расчётов главным потоком
         for (int i = 0; i < MAXNUMBERSHOP; i++) {
             try {
-                allThread[i].join();
+                ALL_THREAD[i].join();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -53,7 +53,7 @@ public class Main {
     public static void startThread(Shop[] myShops) {
         for (int i = 0; i < MAXNUMBERSHOP; i++) {
             SumShopThread sumShopThread = new SumShopThread(myShops[i]);
-            allThread[i] = sumShopThread;
+            ALL_THREAD[i] = sumShopThread;
             sumShopThread.setName("МАГАЗИН-" + i);
             sumShopThread.start();
         }

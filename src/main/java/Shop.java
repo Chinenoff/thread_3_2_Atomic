@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class Shop {
 
-    private final int MAXSIZEBILL = 1000;
+    private final int MAX_SIZ_EBILL = 1000;
     private int[] account;
 
     public int[] getAccount() {
@@ -13,7 +13,7 @@ public class Shop {
         Random random = new Random();
         account = new int[numberOfBills];
         for (int i = 0; i < numberOfBills; i++) {
-            account[i] = random.nextInt(MAXSIZEBILL);
+            account[i] = random.nextInt(MAX_SIZ_EBILL);
         }
     }
 
